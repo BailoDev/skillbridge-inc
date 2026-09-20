@@ -1,11 +1,13 @@
 "use client"
 
-import type { ComponentType } from 'react'
+import type { ComponentType, MouseEvent } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Instagram, Linkedin, Facebook, Mail, MapPin } from 'lucide-react'
 import { FaTiktok } from 'react-icons/fa'
 import { Poppins } from 'next/font/google'
+import { useSheets } from '@/components/sheets/sheets-context'
+import type { PillarId } from '@/components/pillars/types'
 
 // Same font as the heroes and navbar.
 const poppins = Poppins({
@@ -32,21 +34,28 @@ const tornPath = (() => {
   return `${d} L${width} 0 Z`
 })()
 
+type FooterLink = {
+  label: string
+  href: string // every link is a real page…
+  pillar?: PillarId // …but a normal click opens that pillar's sheet
+  contact?: boolean // …or the inquiry sheet
+}
+
 // Routes are assumptions — adjust to your real pages.
-const ecosystemLinks = [
-  { label: 'Academy', href: '/academy' },
-  { label: 'Corporate', href: '/corporate' },
+const ecosystemLinks: FooterLink[] = [
+  { label: 'Academy', href: '/academy', pillar: 'academy' },
+  { label: 'Corporate', href: '/corporate', pillar: 'corporate' },
   { label: 'Talent', href: '/talents' },
-  { label: 'Foundation', href: '/foundation' },
-  { label: 'Technologies', href: '/technologies' },
+  { label: 'Foundation', href: '/foundation', pillar: 'foundation' },
+  { label: 'Technologies', href: '/technologies', pillar: 'technologies' },
 ]
 
-const exploreLinks = [
+const exploreLinks: FooterLink[] = [
   { label: 'About', href: '/about' },
   { label: 'Programmes', href: '/programmes' },
   { label: 'Fellows', href: '/fellows' },
   { label: 'Impact', href: '/impact' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/contact', contact: true },
 ]
 
 const socialLinks: {
@@ -78,6 +87,28 @@ const columnHeading =
 
 const footerLink =
   'inline-block text-sm text-white/70 transition-all duration-300 hover:translate-x-0.5 hover:text-white'
+
+function FooterItem({ link }: { link: FooterLink }) {
+  const { openPillar, openContact } = useSheets()
+
+  const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // Ctrl/Cmd/middle-click still open the real page in a new tab.
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+    if (link.pillar) {
+      e.preventDefault()
+      openPillar(link.pillar)
+    } else if (link.contact) {
+      e.preventDefault()
+      openContact()
+    }
+  }
+
+  return (
+    <Link href={link.href} onClick={onClick} className={footerLink}>
+      {link.label}
+    </Link>
+  )
+}
 
 export default function Footer() {
   return (
@@ -144,9 +175,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {ecosystemLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className={footerLink}>
-                    {link.label}
-                  </Link>
+                  <FooterItem link={link} />
                 </li>
               ))}
             </ul>
@@ -164,9 +193,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {exploreLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className={footerLink}>
-                    {link.label}
-                  </Link>
+                  <FooterItem link={link} />
                 </li>
               ))}
             </ul>
