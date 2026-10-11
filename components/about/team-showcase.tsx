@@ -20,29 +20,30 @@ interface TeamShowcaseProps {
 }
 
 const defaultTeamMembers: TeamMember[] = [
-  {
+    {
     id: "1",
     name: "KAWSU KANTEH",
-    role: "Founder & Lead Facilitator",
+    role: "Founder & Lead Coordinator",
     avatar: "/images/kawsuk.jpeg",
     featuredImage: "/images/kawsu.jpeg",
-    description: "Driven by purpose, building something meaningful for the next generation.",
+    description:
+      "Leading with vision, purpose, and a commitment to empowering Gambian youth.",
   },
   {
     id: "2",
     name: "AMADOU BAILO BAH",
-    role: "Co-Founder & Lead Programs Officer",
+    role: "Co-Founder & CTO",
     avatar: "/images/bailob.jpg",
-    featuredImage: "/images/bailo.jpg",
-    description: "Driven by purpose, building something meaningful for the next generation",
+    featuredImage: "/images/bailo.webp",
+    description: "Building innovative technology to turn ideas into meaningful impact.",
   },
   {
     id: "3",
-    name: "MEET FATIMA KEBBEH",
+    name: "FATIMA KEBBEH",
     role: "Strategy and Communications Advisor",
     avatar: "/images/fkebbeh.jpeg",
     featuredImage: "/images/kebbeh.jpeg",
-    description: "Driven by purpose, building something meaningful for the next generation.",
+    description: "Guiding strategy and communication to strengthen our mission and vision.",
   },
   {
     id: "4",
@@ -50,8 +51,16 @@ const defaultTeamMembers: TeamMember[] = [
     role: "Communications and Media Lead",
     avatar: "/images/isa.jpeg",
     featuredImage: "/images/isha.jpeg",
-    description: "Driven by purpose, we show up every day to build something meaningful for the next generation of Gambian youth.",
+    description: "Sharing our story and amplifying the voices of Gambian youth.",
   },
+  {
+    id: "4",
+    name: "Babucarr",
+    role: "Finance ",
+    avatar: "/images/baboucarr.jpeg",
+    featuredImage: "/images/baboucarr.jpeg",
+    description: "Managing resources responsibly to support growth and sustainability.",
+  }
 ]
 
 export function TeamShowcase({

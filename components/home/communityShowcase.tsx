@@ -35,7 +35,7 @@ const images: Record<
   },
   // Portrait photos, best at 4:5 (e.g. 800x1000)
   photoLeft: {
-    src: '/images/img-1.png',
+    src: '/images/corporate.jpg',
     alt: 'A learner joining a live mentor session',
     label: 'Photo (4:5)',
   },
@@ -46,7 +46,7 @@ const images: Record<
   },
   // Square headshots. If left empty, the emoji avatars are used instead.
   mentor: { src: '/images/img-2.png', alt: 'A mentor', label: '' },
-  learner: { src: '/images/img-2.png', alt: 'A learner', label: '' },
+  learner: { src: '/images/img-4.png', alt: 'A learner', label: '' },
   employer: { src: '/images/img-2.png', alt: 'An employer partner', label: '' },
 }
 

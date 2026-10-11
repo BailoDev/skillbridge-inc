@@ -15,12 +15,10 @@ const poppins = Poppins({
 // Colour theme sampled from the reference image.
 const theme = {
   '--hero-bg': '#1C376B', // deep navy background
-  '--hero-accent': '#b2fcae', // mint-green primary button
-  '--hero-paper': '#f7fbfe', // torn-paper zone at the bottom
-  '--hero-lavender': '#beb0d4', // left arch
-  '--hero-mint': '#ebfeea', // centre arch
-  '--hero-pink': '#ffc6d7', // right arch
+  '--hero-paper': '#f7fbfe',
+  '--hero-white': '#ffff',
 } as CSSProperties
+
 
 /* Torn-paper edge: a deterministic (no Math.random → no hydration mismatch) jagged line. */
 const tornPath = (() => {
@@ -161,14 +159,14 @@ export default function HeroSection() {
       className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-8 sm:pb-10 sm:pt-24 lg:pb-12 lg:pt-32`}
     >
       {/* Torn-paper zone at the bottom. The arches overhang into it. */}
-      <div className="absolute inset-x-0 bottom-0 z-0 h-24 bg-[color:var(--hero-paper)] sm:h-[8.5rem] lg:h-48">
+      <div className="absolute inset-x-0 bottom-0 z-0 h-24 bg-[color:var(--hero-white)] sm:h-[8.5rem] lg:h-48">
         <svg
           aria-hidden="true"
           viewBox="0 0 1440 40"
           preserveAspectRatio="none"
           className="absolute inset-x-0 bottom-[calc(100%-1px)] h-6 w-full sm:h-8"
         >
-          <path d={tornPath} fill="var(--hero-paper)" />
+          <path d={tornPath} fill="var(--hero-white)" />
         </svg>
       </div>
 
@@ -183,7 +181,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm">
-              <Link2 className="h-4 w-4 text-[color:var(--hero-accent)]" />
+              <Link2 className="h-4 w-4 " />
               SKILLBRIDGE
             </span>
           </motion.div>
@@ -195,7 +193,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-10 text-balance text-4xl font-bold leading-[1.15] tracking-tight text-white sm:mt-12 sm:text-5xl lg:text-[64px]"
           >
-            Bridging the Gap Between Learning &amp; Life
+            Bridging the Gap Between Education &amp; Worforce
           </motion.h1>
 
           {/* Subtext */}
@@ -242,16 +240,16 @@ export default function HeroSection() {
         >
           <Arch
             className="w-[31.5%] aspect-[277/463]"
-            bg="bg-[color:var(--hero-lavender)]" src="/images/img-1.png" alt="Hero Arch 1"
+            bg="bg-[color:var(--hero-paper)]" src="/images/img_1.png" alt="Hero Arch 1"
           />
           <Arch
             className="w-[33.3%] aspect-[293/498]"
-            bg="bg-[color:var(--hero-mint)]" src="/images/img-2.png" alt="Hero Arch 2"  
+            bg="bg-[color:var(--hero-paper)]" src="/images/img-2.png" alt="Hero Arch 2"  
           >
           </Arch>
           <Arch
             className="w-[31.5%] aspect-[278/463]"
-            bg="bg-[color:var(--hero-pink)]" src="/images/img-3.png" alt="Hero Arch 3"
+            bg="bg-[color:var(--hero-paper)]" src="/images/img-1.png" alt="Hero Arch 3"
           />
         </motion.div>
       </div>
