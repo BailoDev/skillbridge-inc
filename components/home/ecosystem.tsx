@@ -86,13 +86,8 @@ export default function EcosystemSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-start lg:items-end lg:justify-end"
           >
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
-              SkillBridge is five connected efforts that work together. A person
-              might start in the Academy, grow their skills, and end up placed
-              through Talent. An organisation might start with Corporate training
-              and later hire through Talent, or commission a tool from
-              Technologies. Everything connects back to the same goal: turning
-              learning into opportunity.
+            <p className="font-['Plus_Jakarta_Sans'] text-base sm:text-lg font-medium text-gray-700 leading-relaxed tracking-[-0.02em] max-w-xl">
+              SkillBridge turns potential into progress. Through five connected initiatives, we equip people with in-demand skills, connect talent to real opportunities, and help organisations grow through the right people, training, and technology.
             </p>
           </motion.div>
         </div>
