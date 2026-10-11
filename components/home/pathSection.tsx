@@ -51,7 +51,7 @@ export default function PathSection() {
           transition={{ duration: 0.5 }}
           className="relative max-w-3xl"
         >
-          <span className="text-xs font-semibold tracking-[0.2em] text-indigo-600 uppercase">
+          <span className="text-xs font-semibold tracking-[0.2em] text-blue-800 uppercase">
             How SkillBridge Works
           </span>
           <h2 className="mt-6 text-4xl sm:text-5xl lg:text-[52px] font-serif font-bold text-navy leading-[1.15] tracking-tight">
@@ -72,7 +72,7 @@ export default function PathSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
             >
-              <span className="text-4xl sm:text-5xl font-serif font-bold text-indigo-600">
+              <span className="text-4xl sm:text-5xl font-serif font-bold text-blue-900">
                 {step.number}
               </span>
               <h3 className="mt-4 text-lg font-bold text-navy">

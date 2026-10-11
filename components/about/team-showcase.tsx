@@ -54,7 +54,7 @@ const defaultTeamMembers: TeamMember[] = [
     description: "Sharing our story and amplifying the voices of Gambian youth.",
   },
   {
-    id: "4",
+    id: "5",
     name: "Babucarr",
     role: "Finance ",
     avatar: "/images/baboucarr.jpeg",
