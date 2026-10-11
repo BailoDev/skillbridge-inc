@@ -1,77 +1,125 @@
+
 "use client"
 
-import { useState } from 'react'
-import type { FormEvent } from 'react'
-import { Loader2, Check } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { INTERESTS } from './interests'
+import { useState } from "react"
+import type { FormEvent } from "react"
+import {
+  ArrowRight,
+  Check,
+  CheckCircle2,
+  Loader2,
+  Mail,
+  MessageSquare,
+  Phone,
+  UserRound,
+  Layers3,
+} from "lucide-react"
+import { cn } from "@/lib/utils"
+import { INTERESTS } from "./interests"
 
-const TO_EMAIL = 'skillbridgef@gmail.com'
-
-/* How inquiries are delivered.
-   - Set NEXT_PUBLIC_CONTACT_ENDPOINT (e.g. a Formspree / Web3Forms URL, or your own /api/contact route)
-     and the form POSTs JSON { name, email, interest, message, subject, _subject } to it.
-   - Without it, the form falls back to opening the visitor's email app, pre-filled to skillbridgef@gmail.com. */
+const TO_EMAIL = "skillbridgef@gmail.com"
 const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT
 
-type Delivery = 'sent' | 'mailto'
+type Delivery = "sent" | "mailto"
 
-async function sendInquiry(data: {
+type InquiryData = {
   name: string
   email: string
+  phone: string
   interest: string
   message: string
-}): Promise<Delivery> {
+}
+
+async function sendInquiry(data: InquiryData): Promise<Delivery> {
   const subject = `SkillBridge website inquiry — ${data.interest}`
 
   if (ENDPOINT) {
     const res = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ ...data, subject, _subject: subject }),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        ...data,
+        subject,
+        _subject: subject,
+      }),
     })
-    if (!res.ok) throw new Error('Request failed')
-    return 'sent'
+
+    if (!res.ok) throw new Error("Request failed")
+    return "sent"
   }
 
-  const body = `Name: ${data.name}\nEmail: ${data.email}\nInterest: ${data.interest}\n\n${data.message}`
+  const body = [
+    `Name: ${data.name}`,
+    `Email: ${data.email}`,
+    `Phone: ${data.phone || "Not provided"}`,
+    `Interest: ${data.interest}`,
+    "",
+    data.message,
+  ].join("\n")
+
   window.location.href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(
     subject
   )}&body=${encodeURIComponent(body)}`
-  return 'mailto'
-}
 
-const labelCls = 'text-[11px] uppercase tracking-[0.25em] text-slate-400'
-const inputCls =
-  'mt-2 h-20 w-full border-b border-black/15 bg-transparent text-xl text-[#1C376B] outline-none transition-colors placeholder:text-slate-300 focus:border-[#1C376B]'
+  return "mailto"
+}
 
 type Props = {
-  /** Pre-selects "What is this about?" */
   interest?: string
-  /** 'sheet' = fills the slide-over (scrolling fields + pinned button); 'page' = a card for the /contact page */
-  variant?: 'sheet' | 'page'
+  variant?: "sheet" | "page"
 }
 
-export default function ContactForm({ interest, variant = 'sheet' }: Props) {
-  const isSheet = variant === 'sheet'
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [selected, setSelected] = useState(interest || 'General Inquiry')
+const labelClass =
+  "text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-500"
+
+const inputClass =
+  "mt-2.5 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-[#1C376B] outline-none transition-colors placeholder:text-slate-400 hover:border-blue-200 focus:border-[#397BC4] focus:ring-4 focus:ring-blue-100/70"
+
+export default function ContactForm({
+  interest,
+  variant = "sheet",
+}: Props) {
+  const isSheet = variant === "sheet"
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+
+  const [selected, setSelected] = useState(
+    interest || "General Inquiry"
+  )
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState<Delivery | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const options = INTERESTS.includes(selected) ? INTERESTS : [selected, ...INTERESTS]
+  const options = INTERESTS.includes(selected)
+    ? INTERESTS
+    : [selected, ...INTERESTS]
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     if (submitting) return
+
     setSubmitting(true)
     setError(null)
+
     try {
-      setSubmitted(await sendInquiry({ ...form, interest: selected }))
+      const result = await sendInquiry({
+        ...form,
+        interest: selected,
+      })
+
+      setSubmitted(result)
     } catch {
       setError(
-        `Something went wrong sending your inquiry. Please email us directly at ${TO_EMAIL}.`
+        `We couldn't send your inquiry. Please email us directly at ${TO_EMAIL}.`
       )
     } finally {
       setSubmitting(false)
@@ -82,19 +130,36 @@ export default function ContactForm({ interest, variant = 'sheet' }: Props) {
     return (
       <div
         className={cn(
-          'flex flex-col items-center justify-center px-10 text-center',
-          isSheet ? 'flex-1' : 'border border-black/10 bg-white py-24 shadow-sm'
+          "flex flex-col items-center justify-center px-6 py-16 text-center",
+          isSheet
+            ? "min-h-0 flex-1 overflow-y-auto"
+            : "min-h-[400px] rounded-2xl border border-slate-200 bg-white"
         )}
       >
-        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full bg-[#1C376B]">
-          <Check className="h-6 w-6 text-white" />
+        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-[#1C376B]">
+          {submitted === "sent" ? (
+            <CheckCircle2 className="h-7 w-7" />
+          ) : (
+            <Mail className="h-7 w-7" />
+          )}
         </div>
-        <h3 className="mb-4 text-4xl font-bold tracking-tight text-[#1C376B]">Thank you.</h3>
-        <p className="max-w-sm text-lg text-slate-600">
-          {submitted === 'sent'
-            ? "Your inquiry is on its way to the SkillBridge team. We'll be in touch soon."
-            : `Your email app should open with your inquiry ready to send. If it doesn't, email us at ${TO_EMAIL}.`}
+
+        <h3 className="text-2xl font-semibold tracking-tight text-[#1C376B]">
+          {submitted === "sent" ? "Thank you!" : "Almost there"}
+        </h3>
+
+        <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">
+          {submitted === "sent"
+            ? "Your inquiry has been sent to the SkillBridge team. We look forward to hearing more about your project."
+            : `Your email app should open with your message ready to send. If it doesn't, contact us at ${TO_EMAIL}.`}
         </p>
+
+        <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-[#1C376B]">
+          <Check className="h-4 w-4" />
+          {submitted === "sent"
+            ? "Inquiry submitted successfully"
+            : "Ready for you to send"}
+        </div>
       </div>
     )
   }
@@ -103,83 +168,211 @@ export default function ContactForm({ interest, variant = 'sheet' }: Props) {
     <form
       onSubmit={handleSubmit}
       className={cn(
-        'flex flex-col',
-        isSheet ? 'flex-1 overflow-hidden' : 'border border-black/10 bg-white shadow-sm'
+        "overflow-hidden",
+        isSheet
+          ? "flex min-h-0 flex-1 flex-col"
+          : "rounded-2xl border border-slate-200 bg-white shadow-sm"
       )}
     >
-      <div className={cn(isSheet ? 'flex-1 overflow-y-auto px-8 py-6' : 'px-6 py-8 sm:px-10')}>
-        {isSheet && (
-          <p className="pb-6 leading-relaxed text-slate-600">
-            Tell us who you are and what you need — the right team will get back to you.
+      <div
+        className={cn(
+          "min-h-0 bg-white px-6 py-6 sm:px-8",
+          isSheet && "flex-1 overflow-y-auto overscroll-contain"
+        )}
+      >
+        {/* heading */}
+        <div className="relative mb-7 overflow-hidden rounded-2xl border border-[#2D4B7C] bg-[#1C376B] p-5 sm:p-6">
+          {/* Logo watermark */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[url('/images/logo.png')] bg-right-center bg-no-repeat opacity-[1]"
+            style={{
+              backgroundSize: "min(88%, 360px) auto",
+            }}
+          />
+
+          {/* Navy overlay to soften the logo */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1C376B] via-[#1C376B]/90 to-[#1C376B]/50"
+          />
+
+          {/* Heading content */}
+          <div className="relative flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white">
+              <MessageSquare className="h-5 w-5" />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <h2 className="text-xl font-bold tracking-tight text-white">
+                Let's talk<span className="text-blue-300">.</span>
+              </h2>
+
+              <p className="mt-1 text-sm leading-5 text-blue-100">
+                Have an idea? We'd love to hear about it.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative mt-5 h-px w-full bg-gradient-to-r from-blue-200/50 via-white/20 to-transparent" />
+        </div>
+
+        {/* Form introduction */}
+        <div className="mb-6">
+          <p className="mt-1 text-sm leading-5 text-slate-500">
+            Share a few details and we'll take it from there.
+          </p>
+        </div>
+
+        <div className="space-y-5">
+          {/* Name */}
+          <label className="block">
+            <span className={labelClass}>Your name</span>
+
+            <span className="relative block">
+              <UserRound className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+
+              <input
+                required
+                autoComplete="name"
+                value={form.name}
+                onChange={(e) =>
+                  setForm({ ...form, name: e.target.value })
+                }
+                className={cn(inputClass, "h-12 pl-11")}
+                placeholder="Enter your full name"
+              />
+            </span>
+          </label>
+
+          {/* Email and phone */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <label className="block min-w-0">
+              <span className={labelClass}>Email address</span>
+
+              <span className="relative block">
+                <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+
+                <input
+                  required
+                  type="email"
+                  autoComplete="email"
+                  value={form.email}
+                  onChange={(e) =>
+                    setForm({ ...form, email: e.target.value })
+                  }
+                  className={cn(inputClass, "h-12 pl-11")}
+                  placeholder="you@example.com"
+                />
+              </span>
+            </label>
+
+            <label className="block min-w-0">
+              <span className={labelClass}>Phone number</span>
+
+              <span className="relative block">
+                <Phone className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+
+                <input
+                  type="tel"
+                  autoComplete="tel"
+                  value={form.phone}
+                  onChange={(e) =>
+                    setForm({ ...form, phone: e.target.value })
+                  }
+                  className={cn(inputClass, "h-12 pl-11")}
+                  placeholder="+220 XXX XXXX"
+                />
+              </span>
+            </label>
+          </div>
+
+          {/* Area of interest */}
+          <label className="block">
+            <span className={labelClass}>Area of interest</span>
+
+            <span className="relative block">
+              <Layers3 className="pointer-events-none absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-slate-400" />
+
+              <select
+                value={selected}
+                onChange={(e) => setSelected(e.target.value)}
+                className={cn(
+                  inputClass,
+                  "h-12 cursor-pointer appearance-none pl-11 pr-10"
+                )}
+              >
+                {options.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                ▼
+              </span>
+            </span>
+          </label>
+
+          {/* Message */}
+          <label className="block">
+            <span className={labelClass}>Your message</span>
+
+            <textarea
+              required
+              rows={4}
+              value={form.message}
+              onChange={(e) =>
+                setForm({ ...form, message: e.target.value })
+              }
+              className={cn(
+                inputClass,
+                "min-h-[120px] resize-y py-3 leading-6"
+              )}
+              placeholder="Tell us what you need or what you'd like to build..."
+            />
+
+            <span className="mt-2 block text-xs text-slate-400">
+              Don't worry if you haven't figured everything out yet.
+            </span>
+          </label>
+        </div>
+
+        {error && (
+          <p
+            role="alert"
+            className="mt-5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm leading-6 text-red-700"
+          >
+            {error}
           </p>
         )}
-
-        <label className="block">
-          <span className={labelCls}>Your name</span>
-          <input
-            required
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className={inputCls}
-            placeholder="Full name"
-          />
-        </label>
-
-        <label className="mt-6 block">
-          <span className={labelCls}>Email</span>
-          <input
-            required
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className={inputCls}
-            placeholder="you@email.com"
-          />
-        </label>
-
-        <label className="mt-6 block">
-          <span className={labelCls}>What is this about?</span>
-          <select
-            value={selected}
-            onChange={(e) => setSelected(e.target.value)}
-            className="mt-2 h-16 w-full border-b border-black/15 bg-transparent text-lg text-[#1C376B] outline-none focus:border-[#1C376B]"
-          >
-            {options.map((i) => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="mt-6 block">
-          <span className={labelCls}>Message</span>
-          <textarea
-            required
-            rows={4}
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="mt-2 w-full resize-none border-b border-black/15 bg-transparent py-4 text-lg text-[#1C376B] outline-none transition-colors placeholder:text-slate-300 focus:border-[#1C376B]"
-            placeholder="Tell us a little more…"
-          />
-        </label>
-
-        {error && <p className="mt-6 text-sm text-red-600">{error}</p>}
       </div>
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="flex h-16 w-full shrink-0 items-center justify-center gap-3 bg-[#1C376B] text-xs uppercase tracking-[0.28em] text-white transition-colors duration-300 hover:bg-[#152b56] disabled:opacity-70"
-      >
-        {submitting ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Sending…
-          </>
-        ) : (
-          'Send Inquiry'
-        )}
-      </button>
+      {/* Pinned submit area for sheet mode */}
+      <div className="shrink-0 border-t border-slate-100 bg-white px-6 py-4 sm:px-8">
+        <button
+          type="submit"
+          disabled={submitting}
+          className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#1C376B] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#254984] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {submitting ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              Send inquiry
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </>
+          )}
+        </button>
+
+        <p className="mt-3 text-center text-xs text-slate-400">
+          We'll be happy to hear from you.
+        </p>
+      </div>
     </form>
   )
 }
