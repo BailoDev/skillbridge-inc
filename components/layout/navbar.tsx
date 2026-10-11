@@ -50,9 +50,9 @@ const navLinks: NavItem[] = [
 
 const talentsHref = '/talents'
 
-// Mint pill — same as the hero's primary button.
+// Talents button — white to match the brand palette instead of the earlier mint accent.
 const mintButton =
-  'inline-flex items-center justify-center rounded-full bg-[#b2fcae] font-medium text-[#1C376B] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-95'
+  'inline-flex items-center justify-center rounded-full bg-white font-medium text-[#1C376B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white'
 
 // If your logo artwork is dark, add `brightness-0 invert` to make it white on the navy bar.
 const desktopLogoClass = 'h-12 w-auto object-contain'
@@ -130,14 +130,14 @@ export default function Navbar() {
                     <link.icon
                       className={cn(
                         'h-4 w-4 transition-colors duration-300',
-                        active && 'text-[#b2fcae]'
+                        active && 'text-white'
                       )}
                     />
                     {link.label}
                     {active && (
                       <motion.div
                         layoutId="navbar-indicator"
-                        className="absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-[#b2fcae] xl:left-4 xl:right-4"
+                        className="absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-white xl:left-4 xl:right-4"
                         initial={false}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                       />
@@ -210,7 +210,7 @@ export default function Navbar() {
                   <div
                     className={cn(
                       'flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-200',
-                      active ? 'bg-[#b2fcae]' : 'bg-transparent'
+                      active ? 'bg-white' : 'bg-transparent'
                     )}
                   >
                     <link.icon
@@ -224,7 +224,7 @@ export default function Navbar() {
                   <span
                     className={cn(
                       'text-[10px] font-medium leading-none transition-colors',
-                      active ? 'text-[#b2fcae]' : 'text-white/60'
+                      active ? 'text-white' : 'text-white/60'
                     )}
                   >
                     {link.mobileLabel}

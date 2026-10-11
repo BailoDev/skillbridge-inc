@@ -5,6 +5,7 @@ import './globals.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import SheetsProvider from '@/components/sheets/SheetsProvider'
+import WhatsAppChat from '@/components/WhatAppChat'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -29,6 +30,7 @@ export default function RootLayout({
         <SheetsProvider>
           <Navbar />
           <main>{children}</main>
+          <WhatsAppChat />
           <Footer />
         </SheetsProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

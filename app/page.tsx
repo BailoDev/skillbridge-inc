@@ -11,6 +11,7 @@ import EventsSection from '@/components/home/events-section'
 import CTASection from '@/components/home/cta-section'
 import CommunitySection from '@/components/home/community-section'
 import CommunityShowcase from '@/components/home/communityShowcase'
+import WhatAppChat from '@/components/WhatAppChat'
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <PathSection />
       <CommunityShowcase />
       <FindYourPathSection />
+      <WhatAppChat />
       {/* <WhereYouFitIn /> */}
       {/* <WhySection />
       <PillarsSection />

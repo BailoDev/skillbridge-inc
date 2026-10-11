@@ -217,7 +217,7 @@ export default function HeroSection() {
           >
             <Link
               href="#"
-              className="inline-flex items-center justify-center rounded-full bg-[color:var(--hero-accent)] px-8 py-3.5 text-sm font-medium text-[color:var(--hero-bg)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-95"
+              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-medium text-[color:var(--hero-bg)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
             >
               Partner With Us
             </Link>
