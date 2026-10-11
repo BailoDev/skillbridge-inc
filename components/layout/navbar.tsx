@@ -158,12 +158,12 @@ export default function Navbar() {
                 <MessageCircle className="h-4 w-4 xl:hidden" />
                 <span className="hidden xl:inline">Contact</span>
               </Link>
-              <Link
+              {/* <Link
                 href={talentsHref}
                 className={cn(mintButton, 'px-5 py-2.5 text-sm xl:px-7')}
               >
                 Talents
-              </Link>
+              </Link> */}
             </div>
           </div>
         </nav>
