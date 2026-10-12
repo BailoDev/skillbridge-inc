@@ -1,113 +1,159 @@
-import {
-  PillarHeader,
-  PillarBody,
-  TextSection,
-  GridSection,
-  ListSection,
-  SecondaryCta,
-} from '@/components/pillars/PillarSections'
+import PillarHero from '@/components/pillars/PillarHero'
 import type { PillarMeta } from '@/components/pillars/types'
+import {
+  AreasSection,
+  CorporateClosing,
+  FitSection,
+  ProcessSection,
+  WhySection,
+  type Area,
+  type Step,
+} from './CorporateBlocks'
 
-/* Everything on the Corporate page lives in this file. */
+/* Everything on the Corporate page lives in this file.
+   Photos are optional — drop files into public/images/corporate/ using the names below
+   (or change the paths). Missing photos fall back to a tinted panel. */
 
 export const corporateMeta: PillarMeta = {
   id: 'corporate',
   tab: 'Corporate',
-  eyebrow: 'For businesses, NGOs & institutions',
+  eyebrow: 'For businesses, NGOs & institutions', // kept for the type; not shown in the hero
   title: 'Build the capability your organisation needs.',
-  intro:
-    "Every organisation eventually hits the same wall: the people are willing, but the skills haven't kept up with what the work now demands. SkillBridge Corporate works directly with businesses, NGOs, and institutions to close that gap with training built around your actual needs — not a one-size-fits-all course.",
-  // image: '/images/pillars/corporate.jpg',
+  intro: "Training built around your organisation's actual needs, not a one-size-fits-all course.",
+  image: '/images/corporate/hero.jpg',
   cta: { label: 'Talk to our team', interest: 'Corporate — Talk to Our Team' },
   secondaryCta: {
-    label: 'Tell us what your team needs',
+    label: 'Get in touch',
     interest: 'Corporate — Tell Us What Your Team Needs',
   },
 }
 
+const steps: Step[] = [
+  {
+    title: 'We Listen',
+    text: "We sit with your team and leadership to understand where the real capability gaps are — not just what you think you need, but what's actually slowing your organisation down.",
+    icon: 'listen',
+  },
+  {
+    title: 'We Design',
+    text: "We build a training plan specific to your organisation — the right skills, the right pace, the right format, whether that's a short workshop or a longer structured programme.",
+    icon: 'design',
+  },
+  {
+    title: 'We Deliver',
+    text: "Our trainers deliver the programme directly to your team, in a way that's practical and immediately applicable — not theory for its own sake.",
+    icon: 'deliver',
+  },
+  {
+    title: 'We Follow Up',
+    text: "We check in after training to see what's actually being applied and adjust where needed. Capability building isn't a one-off event.",
+    icon: 'follow',
+  },
+]
+
+const areas: Area[] = [
+  {
+    title: 'Digital Skills',
+    text: 'Helping teams get comfortable and confident with the everyday and advanced digital tools their work requires.',
+    icon: 'digital',
+    image: '/images/corporate/digital.jpg',
+  },
+  {
+    title: 'Data & Analytics',
+    text: 'Helping staff understand, use, and make decisions from data.',
+    icon: 'data',
+    image: '/images/corporate/data.jpg',
+  },
+  {
+    title: 'Technology & AI Literacy',
+    text: 'Helping organisations understand and start using new technology, including AI tools, responsibly and effectively.',
+    icon: 'ai',
+    image: '/images/corporate/ai.jpg',
+  },
+  {
+    title: 'Professional Development',
+    text: 'Communication, leadership, and workplace skills for staff at every level.',
+    icon: 'professional',
+    image: '/images/corporate/professional.jpg',
+  },
+  {
+    title: 'Workplace Productivity',
+    text: 'Practical systems and habits that help teams work more efficiently.',
+    icon: 'productivity',
+    image: '/images/corporate/productivity.jpg',
+  },
+  {
+    title: 'Organisation-Specific Training',
+    text: "Anything else your organisation needs that doesn't fit a standard category — we'll design around it.",
+    icon: 'custom',
+    image: '/images/corporate/custom.jpg',
+  },
+]
+
 export default function CorporateContent() {
   return (
-    <>
-      <PillarHeader meta={corporateMeta} />
-      <PillarBody>
-        <TextSection
-          label="Why Corporate exists"
-          text="Sending staff on a generic training course rarely solves the real problem, because the real problem is usually specific to your organisation — a particular tool your team hasn't mastered, a skill gap slowing down a particular department, a way of working that hasn't modernised. SkillBridge Corporate starts by understanding your organisation before we design anything."
-        />
+    <div className="pb-14">
+      <PillarHero
+        title={corporateMeta.title}
+        intro={corporateMeta.intro}
+        image={corporateMeta.image}
+        cta={{
+          label: 'Talk to us about your team needs',
+          interest: corporateMeta.cta.interest,
+        }}
+      />
 
-        <GridSection
-          label="How we work with you"
-          items={[
-            {
-              title: 'Step 1 — We Listen',
-              text: "We sit with your team and leadership to understand where the real capability gaps are — not just what you think you need, but what's actually slowing your organisation down.",
-            },
-            {
-              title: 'Step 2 — We Design',
-              text: "We build a training plan specific to your organisation — the right skills, the right pace, the right format, whether that's a short workshop or a longer structured programme.",
-            },
-            {
-              title: 'Step 3 — We Deliver',
-              text: "Our trainers deliver the programme directly to your team, in a way that's practical and immediately applicable — not theory for its own sake.",
-            },
-            {
-              title: 'Step 4 — We Follow Up',
-              text: "We check in after training to see what's actually being applied and adjust where needed. Capability building isn't a one-off event.",
-            },
-          ]}
-        />
+      <WhySection
+        eyebrow="Why Corporate exists"
+        title="Real problems. Tailored solutions."
+        text="Sending staff on a generic training course rarely solves the real problem, because the real problem is usually specific to your organisation — a particular tool your team hasn't mastered, a skill gap slowing down a particular department, a way of working that hasn't modernised. SkillBridge Corporate starts by understanding your organisation before we design anything."
+        image="/images/corporate/focus.png"
+        card={{
+          title: 'Your goals. Our focus.',
+          text: 'We listen. We design. We deliver. Training that solves real problems and builds lasting capability.',
+          linkLabel: 'Our process',
+        }}
+      />
 
-        <GridSection
-          label="Areas we can support"
-          items={[
-            {
-              title: 'Digital Skills',
-              text: 'Helping teams get comfortable and confident with the everyday and advanced digital tools their work requires.',
-            },
-            {
-              title: 'Data & Analytics',
-              text: 'Helping staff understand, use, and make decisions from data.',
-            },
-            {
-              title: 'Technology & AI Literacy',
-              text: 'Helping organisations understand and start using new technology, including AI tools, responsibly and effectively.',
-            },
-            {
-              title: 'Professional Development',
-              text: 'Communication, leadership, and workplace skills for staff at every level.',
-            },
-            {
-              title: 'Workplace Productivity',
-              text: 'Practical systems and habits that help teams work more efficiently.',
-            },
-            {
-              title: 'Organisation-Specific Training',
-              text: "Anything else your organisation needs that doesn't fit a standard category — talk to us and we'll design around it.",
-            },
-          ]}
-        />
+      <ProcessSection eyebrow="Our process" title="How we work with you" steps={steps} />
 
-        <ListSection
-          label="Who Corporate is for"
-          items={[
+      <AreasSection
+        eyebrow="Areas we can support"
+        title="Practical skills for real impact."
+        subtitle="We offer training and development in the following areas, and can also create bespoke programmes for your organisation."
+        banner="/images/corporate/areas-banner.jpg"
+        areas={areas}
+      />
+
+      <FitSection
+        who={{
+          title: 'Who Corporate is for',
+          image: '/images/corporate/who.jpg',
+          items: [
             'Businesses that want their existing staff to keep up with a changing world of work',
             'NGOs and institutions building internal capability without hiring new staff',
             'Organisations onboarding a large number of new staff at once and needing structured, consistent training',
             "Any organisation that has tried generic training before and found it didn't stick",
-          ]}
-        />
-
-        <ListSection
-          label="Why work with SkillBridge Corporate"
-          items={[
+          ],
+        }}
+        why={{
+          title: 'Why work with SkillBridge Corporate',
+          items: [
             'We build around your organisation, not a fixed course catalogue',
             "Local trainers who understand The Gambia's specific work context",
             "Training that connects directly to SkillBridge's wider talent pipeline — if you need more people after training your existing team, we can help there too",
-          ]}
-        />
+          ],
+        }}
+      />
 
-        <SecondaryCta cta={corporateMeta.secondaryCta} />
-      </PillarBody>
-    </>
+      <CorporateClosing
+        eyebrow="Ready to upskill your team?"
+        title="Tell us what your team needs."
+        text="We'll work with you to design a training solution that fits your goals, your people, and your organisation."
+        buttonLabel={corporateMeta.secondaryCta?.label ?? 'Get in touch'}
+        interest={corporateMeta.secondaryCta?.interest ?? corporateMeta.cta.interest}
+        image="/images/corporate/closing.jpg"
+      />
+    </div>
   )
 }
