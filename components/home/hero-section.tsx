@@ -55,7 +55,6 @@ function LaptopPaths() {
   )
 }
 
-/* Faint hand-drawn line art scattered around the headline, like the reference. Decorative only. */
 function Doodles() {
   return (
     <div
@@ -109,10 +108,6 @@ function Doodles() {
     </div>
   )
 }
-
-/* Tall pill-shaped "arch" with a thin outline ring behind it.
-   Placeholder silhouette by default — pass `src` (ideally a transparent-background PNG)
-   to drop in a real photo. */
 function Arch({
   className,
   bg,
@@ -156,7 +151,7 @@ export default function HeroSection() {
   return (
     <section
       style={theme}
-      className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-12 sm:pb-10 sm:pt-18 lg:pb-12 lg:pt-22`}
+      className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-12 sm:pb-10 sm:pt-18 lg:pb-12 lg:pt-20`}
     >
       {/* Torn-paper zone at the bottom. The arches overhang into it. */}
       <div className="absolute inset-x-0 bottom-0 z-0 h-24 bg-[color:var(--hero-white)] sm:h-[8.5rem] lg:h-48">
@@ -191,7 +186,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base"
           >
-            We help people build practical skills, help organisations build capability, connect talent to opportunity, remove barriers to access, and build the technology that makes it all possible.
+            Skills, talent and technology that move people from learning to work.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -205,7 +200,7 @@ export default function HeroSection() {
               href="#"
               className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-medium text-[color:var(--hero-bg)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
             >
-              Buy Form
+              Register for a course
             </Link>
             <Link
               href="/about"
