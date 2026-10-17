@@ -156,7 +156,7 @@ export default function HeroSection() {
   return (
     <section
       style={theme}
-      className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-8 sm:pb-10 sm:pt-24 lg:pb-12 lg:pt-32`}
+      className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-12 sm:pb-10 sm:pt-18 lg:pb-12 lg:pt-22`}
     >
       {/* Torn-paper zone at the bottom. The arches overhang into it. */}
       <div className="absolute inset-x-0 bottom-0 z-0 h-24 bg-[color:var(--hero-white)] sm:h-[8.5rem] lg:h-48">
@@ -181,7 +181,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-10 text-balance text-4xl font-bold leading-[1.15] tracking-tight text-white sm:mt-12 sm:text-5xl lg:text-[64px]"
           >
-            Bridging the Gap Between Education &amp; Worforce
+            Bridging the Gap Between Education &amp; Workforce
           </motion.h1>
 
           {/* Subtext */}
@@ -205,7 +205,7 @@ export default function HeroSection() {
               href="#"
               className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-medium text-[color:var(--hero-bg)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
             >
-              Partner With Us
+              Buy Form
             </Link>
             <Link
               href="/about"
