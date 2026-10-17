@@ -8,25 +8,25 @@ const steps = [
     number: '01',
     title: 'Identify',
     description:
-      "We start by figuring out exactly what a person or organisation needs — what skills are missing, what direction makes sense, what capability gap is holding them back.",
+      "We pinpoint the skills gap or direction holding you back.",
   },
   {
     number: '02',
     title: 'Develop',
     description:
-      'We deliver the training, mentorship, and hands-on learning to close that gap — through Academy courses, Corporate programmes, or Foundation support.',
+      'Training, mentorship and hands-on learning to close it.',
   },
   {
     number: '03',
     title: 'Demonstrate',
     description:
-      "Learning alone isn't enough. We help people turn what they've learned into proof — real projects, real experience, a real professional profile they can show employers.",
+      "Real projects and a professional profile employers can see.",
   },
   {
     number: '04',
     title: 'Connect',
     description:
-      'Finally, we connect capable people to real opportunity through Talent placements, employer partnerships, and ongoing support.',
+      'Placements and employer partnerships that open doors.',
   },
 ]
 
@@ -52,10 +52,10 @@ export default function PathSection() {
           className="relative max-w-3xl"
         >
           <span className="text-xs font-semibold tracking-[0.2em] text-blue-800 uppercase">
-            How SkillBridge Works
+            How It Works
           </span>
           <h2 className="mt-6 text-4xl sm:text-5xl lg:text-[52px] font-serif font-bold text-navy leading-[1.15] tracking-tight">
-            From learning to opportunity, one path, four steps.
+            From learning to opportunity in four steps.
           </h2>
         </motion.div>
 
