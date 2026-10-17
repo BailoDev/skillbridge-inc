@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useSheets } from '@/components/sheets/sheets-context'
+import { INTERESTS } from '@/lib/contact-interests'
 
 /* Visual building blocks for the Academy sheet / page.
    Everything is sized by the width of the container it sits in (auto-fit grids), not the
@@ -66,7 +67,7 @@ export function AcademyHero({
       {/* Background photo (hidden automatically if the file is missing, leaving the navy) */}
       {imageOk && (
         <img
-          src="/images/academy.jpg"
+          src={image}
           alt=""
           onError={() => setImageOk(false)}
           className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_top]"
@@ -100,7 +101,6 @@ export type Course = {
   price: string
   icon: AcademyIcon
   image?: string // optional photo for the card banner, e.g. '/images/academy/frontend.jpg'
-  interest: string // pre-fills the contact sheet
 }
 
 function CourseCard({ course }: { course: Course }) {
@@ -144,7 +144,7 @@ function CourseCard({ course }: { course: Course }) {
 
         <button
           type="button"
-          onClick={() => openContact(course.interest)}
+          onClick={() => openContact(INTERESTS.academy)}
           className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#1C376B] px-5 py-2.5 text-xs font-medium text-white transition-colors duration-300 hover:bg-[#152b56]"
         >
           Enroll now
@@ -163,7 +163,7 @@ export function CoursesSection({
 }: {
   eyebrow: string
   title: string
-  subtitle: string
+  subtitle?: string
   courses: Course[]
 }) {
   return (
@@ -174,7 +174,7 @@ export function CoursesSection({
       <h2 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-[#1C376B] sm:text-3xl">
         {title}
       </h2>
-      <p className="mt-2 text-sm text-slate-500">{subtitle}</p>
+      {subtitle && <p className="mt-2 text-sm text-slate-500">{subtitle}</p>}
 
       <div className="mt-7 grid gap-5" style={autoGrid(250)}>
         {courses.map((course) => (
@@ -215,15 +215,8 @@ export function FeatureStrip({ features }: { features: Feature[] }) {
 
 /* ───────────────────────── Closing band ───────────────────────── */
 
-export function ClosingBand({
-  eyebrow,
-  title,
-  text,
-}: {
-  eyebrow: string
-  title: string
-  text: string
-}) {
+export function ClosingBand({ title, buttonLabel }: { title: string; buttonLabel: string }) {
+  const { openContact } = useSheets()
   return (
     <section className="px-6 pt-10 sm:px-10">
       <div className="relative flex flex-wrap items-center justify-between gap-5 overflow-hidden rounded-2xl bg-gradient-to-br from-[#1C376B] to-[#2a4f9a] p-6 text-white sm:p-8">
@@ -232,19 +225,13 @@ export function ClosingBand({
           strokeWidth={0.75}
           className="absolute -right-3 -top-3 h-24 w-24 text-white/10"
         />
-        <div className="relative max-w-sm">
-          <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/70">
-            {eyebrow}
-          </p>
-          <h2 className="mt-2 text-xl font-bold leading-tight sm:text-2xl">{title}</h2>
-          <p className="mt-2 text-sm text-white/80">{text}</p>
-        </div>
+        <h2 className="relative max-w-sm text-xl font-bold leading-tight sm:text-2xl">{title}</h2>
         <button
           type="button"
-          onClick={scrollToCourses}
+          onClick={() => openContact(INTERESTS.academy)}
           className="relative inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1C376B] transition-transform duration-300 hover:-translate-y-0.5"
         >
-          Enrolled Now
+          {buttonLabel}
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
       </div>
