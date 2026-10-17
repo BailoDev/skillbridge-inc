@@ -151,7 +151,7 @@ export default function HeroSection() {
   return (
     <section
       style={theme}
-      className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-12 sm:pb-10 sm:pt-18 lg:pb-12 lg:pt-20`}
+      className={`${poppins.className} relative overflow-hidden bg-[color:var(--hero-bg)] pb-8 pt-12 sm:pb-10 sm:pt-18 lg:pb-0 lg:pt-20`}
     >
       {/* Torn-paper zone at the bottom. The arches overhang into it. */}
       <div className="absolute inset-x-0 bottom-0 z-0 h-24 bg-[color:var(--hero-white)] sm:h-[8.5rem] lg:h-48">

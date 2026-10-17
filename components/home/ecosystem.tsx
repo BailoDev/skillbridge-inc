@@ -70,9 +70,6 @@ export default function EcosystemSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs font-semibold tracking-[0.2em] text-blue-800 uppercase">
-              Why SkillBridge Exists
-            </span>
             <h2 className="mt-6 text-4xl sm:text-5xl lg:text-[52px] font-serif font-bold text-navy leading-[1.15] tracking-tight">
               One ecosystem.<br />
               Five ways in.
