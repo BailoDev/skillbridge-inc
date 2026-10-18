@@ -20,7 +20,7 @@ export const corporateMeta: PillarMeta = {
   eyebrow: 'For businesses, NGOs & institutions', // kept for the type; not shown in the hero
   title: 'Build the capability your organisation needs to perform.',
   intro: "Training built around your organisation's needs, not a generic course.",
-  image: '/images/corporate/hero.jpg',
+  image: '/images/corporate/corporate1.jpg',
   cta: { label: 'Talk to our team', interest: 'Corporate — Talk to Our Team' },
   secondaryCta: {
     label: 'Get in touch',
@@ -31,17 +31,17 @@ export const corporateMeta: PillarMeta = {
 const steps: Step[] = [
   {
     title: 'We Listen',
-    text: "We sit with your team and leadership to understand where the real capability gaps are — not just what you think you need, but what's actually slowing your organisation down.",
+    text: "We sit with your team and leadership to understand where the real capability gaps are not just what you think you need, but what's actually slowing your organisation down.",
     icon: 'listen',
   },
   {
     title: 'We Design',
-    text: "We build a training plan specific to your organisation — the right skills, the right pace, the right format, whether that's a short workshop or a longer structured programme.",
+    text: "We build a training plan specific to your organisation the right skills, the right pace, the right format, whether that's a short workshop or a longer structured programme.",
     icon: 'design',
   },
   {
     title: 'We Deliver',
-    text: "Our trainers deliver the programme directly to your team, in a way that's practical and immediately applicable — not theory for its own sake.",
+    text: "Our trainers deliver the programme directly to your team, in a way that's practical and immediately applicable not theory for its own sake.",
     icon: 'deliver',
   },
   {
@@ -56,13 +56,13 @@ const areas: Area[] = [
     title: 'Digital Skills',
     text: 'Helping teams get comfortable and confident with the everyday and advanced digital tools their work requires.',
     icon: 'digital',
-    image: '/images/corporate/digital.jpg',
+    image: '/images/corporate/digital-skills.jpg',
   },
   {
     title: 'Data & Analytics',
     text: 'Helping staff understand, use, and make decisions from data.',
     icon: 'data',
-    image: '/images/corporate/data.jpg',
+    image: '/images/corporate/analytics.jpg',
   },
   {
     title: 'Technology & AI Literacy',
@@ -74,19 +74,19 @@ const areas: Area[] = [
     title: 'Professional Development',
     text: 'Communication, leadership, and workplace skills for staff at every level.',
     icon: 'professional',
-    image: '/images/corporate/professional.jpg',
+    image: '/images/corporate/development.jpg',
   },
   {
     title: 'Workplace Productivity',
     text: 'Practical systems and habits that help teams work more efficiently.',
     icon: 'productivity',
-    image: '/images/corporate/productivity.jpg',
+    image: '/images/corporate/workplace.jpg',
   },
   {
     title: 'Organisation-Specific Training',
     text: "Anything else your organisation needs that doesn't fit a standard category — we'll design around it.",
     icon: 'custom',
-    image: '/images/corporate/custom.jpg',
+    image: '/images/corporate/organization.jpg',
   },
 ]
 
@@ -107,7 +107,7 @@ export default function CorporateContent() {
         eyebrow="Why Corporate exists"
         title="Real problems. Tailored solutions."
         text="We start by understanding your organisation, then design training around it. That means your team gets the skills they need, in a way that actually sticks."
-        image="/images/corporate/focus.png"
+        // image="/images/corporate/focus.png"
         card={{
           title: 'Your goals. Our focus.',
           text: 'We listen. We design. We deliver. Training that solves real problems and builds lasting capability.',
@@ -121,14 +121,14 @@ export default function CorporateContent() {
         eyebrow="Areas we can support"
         title="Practical skills for real impact."
         subtitle="We offer training and development in the following areas, and can also create bespoke programmes for your organisation."
-        banner="/images/corporate/areas-banner.jpg"
+        // banner="/images/corporate/corporate.jpg"
         areas={areas}
       />
 
       <FitSection
         who={{
           title: 'Who Corporate is for',
-          image: '/images/corporate/who.jpg',
+          image: '/images/corporate/focus.png',
           items: [
             'Businesses that want their existing staff to keep up with a changing world of work',
             'NGOs and institutions building internal capability without hiring new staff',
@@ -141,7 +141,7 @@ export default function CorporateContent() {
           items: [
             'We build around your organisation, not a fixed course catalogue',
             "Local trainers who understand The Gambia's specific work context",
-            "Training that connects directly to SkillBridge's wider talent pipeline — if you need more people after training your existing team, we can help there too",
+            "Training that connects directly to SkillBridge's wider talent pipeline if you need more people after training your existing team, we can help there too",
           ],
         }}
       />
@@ -152,7 +152,7 @@ export default function CorporateContent() {
         text="We'll work with you to design a training solution that fits your goals, your people, and your organisation."
         buttonLabel={corporateMeta.secondaryCta?.label ?? 'Get in touch'}
         interest={corporateMeta.secondaryCta?.interest ?? corporateMeta.cta.interest}
-        image="/images/corporate/closing.jpg"
+        image="/images/corporate/corporate.jpg"
       />
     </div>
   )
