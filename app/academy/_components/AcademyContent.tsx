@@ -26,74 +26,73 @@ const courses: Course[] = [
   {
     title: 'Front-end Development',
     description:
-      'Learn to build modern, responsive websites and web applications using HTML, CSS, JavaScript and popular frameworks.',
+      'Build responsive websites and web apps with HTML, CSS, JavaScript and modern frameworks.',
     duration: '12 weeks',
     price: 'GMD 6,000',
     icon: 'code',
     image: '/images/academy/web.jpg',
-    interest: 'Academy — Front-end Development',
+    // interest: 'Academy — Front-end Development',
   },
   {
     title: 'Accounting Software (Quickbooks)',
     description:
-      'Get hands-on with QuickBooks and learn how to manage finances, track expenses, and create professional reports.',
+      'Manage finances, track expenses and produce professional reports in QuickBooks.',
     duration: '4 weeks',
     price: 'GMD 2,500',
     icon: 'calculator',
     image: '/images/academy/quickbooks.jpg',
-    interest: 'Academy — Accounting Software (Quickbooks)',
+    // interest: 'Academy — Accounting Software (Quickbooks)',
   },
   {
     title: 'Google Workspace and Analytics',
     description:
-      'Master Google Workspace tools and learn how to use data and analytics to make better decisions and drive results.',
+      'Master Google Workspace and use data to make better decisions.',
     duration: '12 weeks',
     price: 'GMD 5,000',
     icon: 'workspace',
     image: '/images/academy/gworkspace.jpg',
-    interest: 'Academy — Google Workspace and Analytics',
+    // interest: 'Academy — Google Workspace and Analytics',
   },
   {
     title: 'Communication and Public Speaking',
     description:
-      'Build your confidence, improve your communication skills, and learn how to speak with clarity, purpose, and impact — in any setting.',
+      'Speak with clarity, confidence and impact in any setting.',
     duration: '12 weeks',
     price: 'GMD 6,000',
     icon: 'speaking',
     image: '/images/academy/communication.jpg',
-    interest: 'Academy — Communication and Public Speaking',
+    // interest: 'Academy — Communication and Public Speaking',
   },
   {
     title: 'UI/UX for Beginners',
     description:
-      'Learn how to design user-friendly digital experiences, from research and wireframing to prototyping and testing.',
+      'Design user-friendly digital experiences, from research to prototype.',
     duration: '12 weeks',
     price: 'GMD 6,000',
     icon: 'design',
     image: '/images/academy/ui.jpg',
-    interest: 'Academy — UI/UX',
   },
 ]
 
 const features: Feature[] = [
   {
     title: 'Learn by Doing',
-    text: 'Hands-on projects and real-world exercises, not just theory.',
+    text: 'Hands on projects.',
     icon: 'learn',
   },
   {
     title: 'Expert Instructors',
-    text: 'Learn from experienced professionals and industry experts.',
+    text: 'Learn from experienced industry professionals.',
     icon: 'instructors',
   },
   {
     title: 'Build Your Portfolio',
-    text: 'Create tangible work you can show employers.',
+    text: 'Create work you can show employers.',
     icon: 'portfolio',
   },
   {
     title: 'Career Ready',
-    text: "Gain skills, confidence, and connections for what's next.",
+    text: "Gain skills, confidence and connections.",
     icon: 'career',
   },
 ]
@@ -115,12 +114,7 @@ export default function AcademyContent() {
       />
 
       <FeatureStrip features={features} />
-
-      <ClosingBand
-        eyebrow="Ready to get started?"
-        title="Your next chapter starts with a skill."
-        text="Choose a course, build your skills, and take the next step toward your goals."
-      />
+     
     </div>
   )
 }
