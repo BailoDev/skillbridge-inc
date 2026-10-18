@@ -20,12 +20,12 @@ type PathItem = {
 
 const paths: PathItem[] = [
   { title: 'I want to build my skills', cta: 'Explore Academy', href: '/academy', pillar: 'academy' },
-  { title: 'I want to train my team or organisation', cta: 'Talk to Corporate', href: '/corporate', pillar: 'corporate' },
-  { title: "I'm ready to work and want to be found", cta: 'Join the Talent Pool', href: '/talents' },
-  { title: "I'm hiring and need capable people", cta: 'Hire Talent', href: '/contact', contact: true },
+  { title: 'I want to train my team', cta: 'Talk to Corporate', href: '/corporate', pillar: 'corporate' },
+  { title: "I want to be found by employers", cta: 'Join the Talent Pool', href: '/talents' },
+  { title: "I'm hiring", cta: 'Hire Talent', href: '/contact', contact: true },
   { title: 'I need support to access opportunity', cta: 'Explore Foundation', href: '/foundation', pillar: 'foundation' },
-  { title: 'I need a website, app, or digital tool built', cta: 'Build with Technologies', href: '/technologies', pillar: 'technologies' },
-  { title: 'I want to support or partner with SkillBridge', cta: 'Partner with us', href: '/contact', contact: true },
+  { title: 'I need a website, app, or tool built', cta: 'Build with Technologies', href: '/technologies', pillar: 'technologies' },
+  { title: 'I want to partner with SkillBridge', cta: 'Partner with us', href: '/contact', contact: true },
 ]
 
 // Plain left-click only: Ctrl/Cmd/middle-click still open the real page in a new tab.

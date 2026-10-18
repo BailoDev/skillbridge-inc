@@ -28,8 +28,7 @@ const poppins = Poppins({
 })
 
 /* Palette (from the hero):
-   navy #1C376B – bar
-   mint #b2fcae – accent / primary button */
+   navy #1C376B – bar */
 
 type NavItem = {
   label: string
@@ -48,13 +47,14 @@ const navLinks: NavItem[] = [
   { label: 'Technologies', mobileLabel: 'Tech', icon: Cpu, href: '/technologies', pillar: 'technologies' },
 ]
 
-const talentsHref = '/talents'
+// Talents is hidden everywhere for now. To bring it back, uncomment this, the `mintButton`
+// below, and the two commented <Link> blocks (desktop bar and mobile top bar).
+// const talentsHref = '/talents'
+// const mintButton =
+//   'inline-flex items-center justify-center rounded-full bg-white font-medium text-[#1C376B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white'
 
-// Talents button — white to match the brand palette instead of the earlier mint accent.
-const mintButton =
-  'inline-flex items-center justify-center rounded-full bg-white font-medium text-[#1C376B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white'
-
-// If your logo artwork is dark, add `brightness-0 invert` to make it white on the navy bar.
+// One logo for every screen size (add `brightness-0 invert` if the artwork is dark).
+const LOGO_SRC = '/images/logo.png'
 const desktopLogoClass = 'h-12 w-auto object-contain'
 const mobileLogoClass = 'h-10 w-auto object-contain'
 
@@ -106,11 +106,7 @@ export default function Navbar() {
           <div className="grid h-20 grid-cols-[1fr_auto_1fr] items-center">
             {/* Logo */}
             <Link href="/" className="flex items-center justify-self-start">
-              <img
-                src="/images/logo.png"
-                alt="SkillBridge Logo"
-                className={desktopLogoClass}
-              />
+              <img src={LOGO_SRC} alt="SkillBridge Logo" className={desktopLogoClass} />
             </Link>
 
             {/* Nav links with icons */}
@@ -147,7 +143,7 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Contact (opens the inquiry sheet) + Talents button */}
+            {/* Contact (opens the inquiry sheet) */}
             <div className="flex items-center gap-2 justify-self-end xl:gap-3">
               <Link
                 href="/contact"
@@ -169,15 +165,11 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* ── Mobile Top Bar (logo + Contact + Talents) ── */}
+      {/* ── Mobile / tablet top bar (logo + Contact) ── */}
       <header className={cn(barClass, 'lg:hidden')}>
         <div className="flex h-16 items-center justify-between px-4 sm:px-6">
           <Link href="/" className="flex items-center">
-            <img
-              src="/images/skillbridge-logo.png"
-              alt="SkillBridge Logo"
-              className={mobileLogoClass}
-            />
+            <img src={LOGO_SRC} alt="SkillBridge Logo" className={mobileLogoClass} />
           </Link>
           <div className="flex items-center gap-2">
             <Link
@@ -187,57 +179,62 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <Link href={talentsHref} className={cn(mintButton, 'px-5 py-2 text-xs')}>
+            {/* <Link href={talentsHref} className={cn(mintButton, 'px-5 py-2 text-xs')}>
               Talents
-            </Link>
+            </Link> */}
           </div>
         </div>
       </header>
 
-      {/* ── Mobile Bottom Tab Bar (Apple-style, dark glass) ── */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
-        <div className="mx-3 mb-3 rounded-2xl border border-white/10 bg-[#1C376B]/85 shadow-lg shadow-black/30 backdrop-blur-xl">
-          <div className="flex items-center justify-around px-1 py-2">
-            {navLinks.map((link) => {
-              const active = isActive(link)
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => onNavClick(e, link)}
-                  className="relative flex min-w-0 flex-1 flex-col items-center gap-0.5 px-1 py-1"
+      {/* ── Mobile bottom tab bar: full width, edge to edge.
+            Labels show from 400px up; on smaller phones it's icons only. ── */}
+      <nav
+        aria-label="Primary"
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#1C376B]/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_20px_rgba(0,0,0,0.25)] backdrop-blur-xl lg:hidden"
+      >
+        <div className="flex items-stretch">
+          {navLinks.map((link) => {
+            const active = isActive(link)
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={(e) => onNavClick(e, link)}
+                aria-label={link.label}
+                aria-current={active ? 'page' : undefined}
+                className="flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 py-2"
+              >
+                <div
+                  className={cn(
+                    'flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-200',
+                    active ? 'bg-white' : 'bg-transparent'
+                  )}
                 >
-                  <div
+                  <link.icon
                     className={cn(
-                      'flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-200',
-                      active ? 'bg-white' : 'bg-transparent'
+                      'h-5 w-5 transition-colors',
+                      active ? 'text-[#1C376B]' : 'text-white/60'
                     )}
-                  >
-                    <link.icon
-                      className={cn(
-                        'h-5 w-5 transition-colors',
-                        active ? 'text-[#1C376B]' : 'text-white/60'
-                      )}
-                      strokeWidth={active ? 2 : 1.5}
-                    />
-                  </div>
-                  <span
-                    className={cn(
-                      'text-[10px] font-medium leading-none transition-colors',
-                      active ? 'text-white' : 'text-white/60'
-                    )}
-                  >
-                    {link.mobileLabel}
-                  </span>
-                </Link>
-              )
-            })}
-          </div>
+                    strokeWidth={active ? 2 : 1.5}
+                  />
+                </div>
+                <span
+                  className={cn(
+                    'hidden text-[10px] font-medium leading-none transition-colors min-[400px]:block',
+                    active ? 'text-white' : 'text-white/60'
+                  )}
+                >
+                  {link.mobileLabel}
+                </span>
+              </Link>
+            )
+          })}
         </div>
       </nav>
 
-      {/* Bottom padding spacer so content isn't hidden behind tab bar on mobile */}
-      <div className="h-20 lg:hidden" />
+      {/* No spacer here any more. It sat at the top of the page and created the gap under the
+          mobile bar. Add bottom padding to your layout instead, e.g. <body className="pb-20 lg:pb-0">,
+          so the tab bar never covers content. */}
     </div>
   )
 }

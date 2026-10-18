@@ -157,9 +157,9 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: '', label: 'Learners Trained' },
-  { value: '', label: 'Employer Partners' },
-  { value: '', label: 'Job Placements' },
+  { value: '190', label: 'Learners Trained' },
+  { value: '6', label: 'Employer Partners' },
+  { value: '12', label: 'Job Placements' },
 ]
 
 interface FloatingItem {
@@ -497,7 +497,7 @@ export default function CommunityShowcase() {
           >
             Bridge
           </span>
-          <motion.h2
+          {/* <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -505,7 +505,7 @@ export default function CommunityShowcase() {
             className="relative max-w-2xl text-center text-3xl sm:text-4xl font-serif font-bold text-navy leading-[1.2]"
           >
             We Build The Best Pathways For Emerging Talent
-          </motion.h2>
+          </motion.h2> */}
         </div>
       </div>
     </section>

@@ -78,8 +78,7 @@ const socialLinks: {
     href: 'https://www.tiktok.com/@skillbridge_foundation?_r=1&_t=ZT-96a4UWtw2rF',
     icon: FaTiktok,
   },
-  // Replace '#' with your Facebook page URL.
-  { label: 'Facebook', href: '#', icon: Facebook },
+  // { label: 'Facebook', href: '#', icon: Facebook },
 ]
 
 const columnHeading =
@@ -144,7 +143,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 max-w-xs text-base leading-relaxed text-white/80">
-              Bridging the Gap Between Learning and Life.
+              Bridging the Gap Between Education and Workforce.
             </p>
 
             <div className="mt-8 flex items-center gap-3">
