@@ -23,8 +23,8 @@ export const foundationMeta: PillarMeta = {
   eyebrow: 'For young people who face barriers', // kept for the type; not shown in the hero
   title: 'Making sure opportunity reaches everyone.',
   intro: "Where you're born and what you can afford should never decide whether you get a fair shot.",
-  image: '/images/foundation/hero.jpg',
-  cta: { label: 'Support our work', interest: 'Foundation — Support Our Work' },
+  image: '/images/foundation/fdt.jpeg',
+  cta: { label: 'Support our work', interest: 'Foundation Support Our Work' },
   secondaryCta: { label: 'Partner with us', interest: 'Foundation — Partner With Us' },
 }
 
@@ -56,7 +56,7 @@ const flagship: Flagship = {
   title: 'SkillBridge Career Accelerator Fellowship',
   text: 'A competitive 16-week professional development programme for ambitious young people serious about bridging the gap between where they are and where they want to be. Foundation works to make sure the right candidates can take part, whatever their background or circumstances.',
   highlights: ['16 weeks', 'Cohort-based', 'Mentorship', 'Real projects', 'Public showcase'],
-  image: '/images/foundation/accelerator.jpg',
+  image: '/images/foundation/img-5.png',
   cta: {
     label: 'Apply for the Fellowship',
     interest: 'Foundation — Career Accelerator Fellowship',
@@ -69,24 +69,24 @@ const flagship: Flagship = {
 const programmes: Programme[] = [
   {
     title: 'Community Skills Outreach',
-    text: 'Short, practical workshops taken directly into rural and underserved communities — from digital basics and CV writing to interview preparation.',
+    text: 'Short, practical workshops taken directly into rural and underserved communities from digital basics and CV writing to interview preparation.',
     tag: 'Short series',
     icon: 'community',
-    cta: { label: 'Bring a workshop to your community', interest: 'Foundation — Community Skills Outreach' },
+    cta: { label: 'Bring a workshop to your community', interest: 'Foundation Community Skills Outreach' },
   },
   {
     title: 'Sponsorship & Support Fund',
-    text: 'Covers the real costs that keep people out — programme fees, transport, data and equipment — so talented young people can join Academy programmes.',
+    text: 'Covers the real costs that keep people out — programme fees, transport, data and equipment so talented young people can join Academy programmes.',
     tag: 'Funded places',
     icon: 'sponsorship',
-    cta: { label: 'Ask about support', interest: 'Foundation — Sponsorship & Support Fund' },
+    cta: { label: 'Ask about support', interest: 'Foundation Sponsorship & Support Fund' },
   },
   {
     title: 'Pathway to Talent',
     text: 'Follow-on support for Foundation participants once training ends, helping them move into work through SkillBridge Talent.',
     tag: 'After training',
     icon: 'talent',
-    cta: { label: 'Learn about the pathway', interest: 'Foundation — Pathway to Talent', soon: true },
+    cta: { label: 'Learn about the pathway', interest: 'Foundation Pathway to Talent', soon: true },
   },
 ]
 
@@ -95,25 +95,25 @@ const involve: Involve[] = [
     title: 'Mentorship Programme',
     text: 'Connect with young people as a mentor, sharing your experience and guiding their career journey.',
     icon: 'mentor',
-    cta: { label: 'Become a mentor', interest: 'Foundation — Mentor', soon: true },
+    cta: { label: 'Become a mentor', interest: 'Foundation Mentor', soon: true },
   },
   {
     title: 'Volunteer With Us',
     text: 'Share your time and skills to directly support our programmes and reach.',
     icon: 'volunteer',
-    cta: { label: 'Become a volunteer', interest: 'Foundation — Volunteer', soon: true },
+    cta: { label: 'Become a volunteer', interest: 'Foundation Volunteer', soon: true },
   },
   {
     title: 'Ambassador Programme',
     text: 'Represent SkillBridge at your school, university, or community and help spread access to more young people.',
     icon: 'ambassador',
-    cta: { label: 'Become an ambassador', interest: 'Foundation — Ambassador', soon: true },
+    cta: { label: 'Become an ambassador', interest: 'Foundation Ambassador', soon: true },
   },
   {
     title: 'Partner With Us',
     text: 'Organisations and institutions can partner with Foundation to fund or deliver outreach at scale.',
     icon: 'partner',
-    cta: { label: 'Explore partnership', interest: 'Foundation — Partner With Us' },
+    cta: { label: 'Explore partnership', interest: 'Foundation Partner With Us' },
   },
 ]
 
@@ -149,7 +149,7 @@ export default function FoundationContent() {
 
       <ServeSection
         title="Who Foundation serves"
-        image="/images/foundation/serve.jpg"
+        image="/images/foundation/img-5.png"
         items={[
           'Young people in rural and underserved communities across The Gambia',
           'Students and job-seekers who face financial barriers to accessing training',
