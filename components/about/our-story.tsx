@@ -12,12 +12,12 @@ const storySteps = [
   {
     icon: Lightbulb,
     title: 'Our Response',
-    description: 'We created a structured program to close the gap intentionally.',
+    description: 'We built a structured programme to close the gap.',
   },
   {
     icon: Rocket,
-    title: 'Our Vision',
-    description: 'Expanding to empower young people across The Gambia.',
+    title: 'Our Growth',
+    description: 'Expanding to reach young people across The Gambia and Beyond.',
   },
 ]
 

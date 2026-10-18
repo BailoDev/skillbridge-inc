@@ -132,7 +132,7 @@ export default function AboutHero() {
               <Link href="/" className="transition-colors duration-300 hover:text-white">
                 Home
               </Link>
-              <span className="text-[#b2fcae]">&gt;</span>
+              <span className="text-[#ffff]">&gt;</span>
               <span className="text-white">About</span>
             </nav>
           </motion.div>
@@ -143,7 +143,7 @@ export default function AboutHero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-8 text-balance text-4xl font-bold leading-[1.15] tracking-tight text-white sm:mt-10 sm:text-5xl lg:text-[56px]"
           >
-            About SkillBridge Foundation
+            About SkillBridge
           </motion.h1>
 
           <motion.p
@@ -152,8 +152,7 @@ export default function AboutHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base"
           >
-            We bridge the gap between learning and professional reality by equipping young people
-            with skills, clarity and exposure to succeed in a changing world.
+            We help people build practical skills, help organisations build capability, connect talent to opportunity, remove barriers to access, and build the technology that makes it all possible.
           </motion.p>
         </div>
       </div>
