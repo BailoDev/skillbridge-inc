@@ -71,7 +71,6 @@ function Eyebrow({ children, light }: { children: string; light?: boolean }) {
 /* ───────────────────────── Why Corporate exists ───────────────────────── */
 
 export function WhySection({
-  eyebrow,
   title,
   text,
   image,
@@ -85,14 +84,13 @@ export function WhySection({
 }) {
   return (
     <section className="px-6 pt-12 sm:px-10">
-      <Eyebrow>{eyebrow}</Eyebrow>
       <h2 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-[#1C376B] sm:text-3xl">
         {title}
       </h2>
       <p className="mt-4 text-sm leading-relaxed text-slate-500 sm:text-base">{text}</p>
 
       <div className="mt-7 overflow-hidden rounded-2xl bg-[#f3f7fd]">
-        <div className="grid" style={autoGrid(220)}>
+        {/* <div className="grid" style={autoGrid(220)}>
           {image && (
             <div className="relative min-h-[160px] bg-gradient-to-br from-[#dbe7f8] to-[#eaf1fb]">
               <Photo src={image} className="absolute inset-0 h-full w-full object-cover" />
@@ -113,7 +111,7 @@ export function WhySection({
               <ArrowRight className="h-3.5 w-3.5" />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

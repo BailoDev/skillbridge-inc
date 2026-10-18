@@ -18,8 +18,8 @@ export const corporateMeta: PillarMeta = {
   id: 'corporate',
   tab: 'Corporate',
   eyebrow: 'For businesses, NGOs & institutions', // kept for the type; not shown in the hero
-  title: 'Build the capability your organisation needs.',
-  intro: "Training built around your organisation's actual needs, not a one-size-fits-all course.",
+  title: 'Build the capability your organisation needs to perform.',
+  intro: "Training built around your organisation's needs, not a generic course.",
   image: '/images/corporate/hero.jpg',
   cta: { label: 'Talk to our team', interest: 'Corporate — Talk to Our Team' },
   secondaryCta: {
@@ -106,7 +106,7 @@ export default function CorporateContent() {
       <WhySection
         eyebrow="Why Corporate exists"
         title="Real problems. Tailored solutions."
-        text="Sending staff on a generic training course rarely solves the real problem, because the real problem is usually specific to your organisation — a particular tool your team hasn't mastered, a skill gap slowing down a particular department, a way of working that hasn't modernised. SkillBridge Corporate starts by understanding your organisation before we design anything."
+        text="We start by understanding your organisation, then design training around it. That means your team gets the skills they need, in a way that actually sticks."
         image="/images/corporate/focus.png"
         card={{
           title: 'Your goals. Our focus.',
