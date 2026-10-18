@@ -57,7 +57,7 @@ const courses: Course[] = [
     title: 'Communication and Public Speaking',
     description:
       'Speak with clarity, confidence and impact in any setting.',
-    duration: '12 weeks',
+    duration: '4 weeks',
     price: 'GMD 6,000',
     icon: 'speaking',
     image: '/images/academy/communication.jpg',
